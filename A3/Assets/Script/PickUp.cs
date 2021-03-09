@@ -5,22 +5,22 @@ using UnityEngine;
 public class PickUp : MonoBehaviour
 {
    public Transform theDest;
-   
-   void OnMouseDown()
+   Vector3 velocity;
+   void OnMouseDown() // if mouse click
    {
-       GetComponent<BoxCollider>().enabled = false;
-       GetComponent<Rigidbody>().useGravity = false;
-       GetComponent<Rigidbody>().freezeRotation = true;
-       
-       this.transform.position = theDest.position;
-       this.transform.parent = GameObject.Find("Destination").transform;
+       GetComponent<SphereCollider>().enabled = false; //cancel the sphere collider
+       GetComponent<Rigidbody>().useGravity = false; // cancel the gravity
+       GetComponent<Rigidbody>().freezeRotation = true; // cancel the rotation
+       GetComponent<Rigidbody>().velocity = velocity; // cancel the velocity
+       this.transform.position = theDest.position; // transform to the destination
+       this.transform.parent = GameObject.Find("Destination").transform; // get where the destination is been set
+        
    }
-   void OnMouseUp()
+   void OnMouseUp() // if mouse release
    {
-       this.transform.parent = null;
-       GetComponent<Rigidbody>().freezeRotation = false;
-
-       GetComponent<Rigidbody>().useGravity = true;
-       GetComponent<BoxCollider>().enabled = true;
+       this.transform.parent = null; // cancel the destination 
+       GetComponent<Rigidbody>().freezeRotation = false; // enable the rotation
+       GetComponent<Rigidbody>().useGravity = true; // enable the gravity
+       GetComponent<SphereCollider>().enabled = true; // enable the sphere collider
    }
 }

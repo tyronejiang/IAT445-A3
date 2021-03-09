@@ -8,6 +8,8 @@ TagManager:
   - Selectable
   - gate
   - Coconut
+  - crab
+  - crab2
   layers:
   - Default
   - TransparentFX
